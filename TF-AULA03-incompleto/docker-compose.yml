@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "5000:5000"
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: northwind
+      POSTGRES_USER: testeTf
+      POSTGRES_PASSWORD: faat
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
